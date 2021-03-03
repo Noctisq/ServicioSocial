@@ -43,4 +43,22 @@ document.querySelector("#register").addEventListener('click', (e) => {
 
 });
 
-
+document.getElementById("institucion").addEventListener('input', (e) => {
+    const cosa = document.getElementById("institucion").value;
+    if (cosa == "otra") {
+        document.getElementById('informacionPaga').innerHTML = `
+        <label htmlFor="">Informacion de pago</label>
+        <p>
+        No. Cuenta: <strong>0102001446</strong> <br/>
+        Nombre: <strong>Universidad Politécnica de Aguascalientes</strong><br/>
+        Banco: <strong>Bancomer</strong><br/>
+        Sucursal: <strong>7703 Gobierno Aguascalientes</strong><br/>
+        Clabe: <strong>012010001020014464</strong><br/>
+        <br/>
+        Deberas enviar tu comprobante de pago a <strong>coloquio2redinags@upa.edu.mx</strong>
+        </p>
+        `;
+    } else {
+        document.getElementById('informacionPaga').innerHTML = ``
+    }
+});

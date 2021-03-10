@@ -16,6 +16,21 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
 }
 
+button {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: rgb(28, 47, 93);
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgb(28, 47, 93);
+}
+
 .logoUpaHeader {
   margin-left: 65px;
 }

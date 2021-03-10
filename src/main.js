@@ -16,6 +16,7 @@ document.querySelector("#register").addEventListener('click', (e) => {
     e.preventDefault();
     const name = document.querySelector("#name").value;
     const lastname = document.querySelector("#lastname").value;
+    const correo = document.querySelector("#correo").value;
     const title = document.querySelector("#bdate").value;
     const inst = document.querySelector("#institucion").value;
     const type = document.querySelector("#tipo").value;
@@ -24,12 +25,14 @@ document.querySelector("#register").addEventListener('click', (e) => {
     console.log(type)
     const storageRef = firebase.storage().ref();
     const fileRef = storageRef.child(file.name);
-    var metadata = {
+    
+    const metadata = {
         customMetadata: {
             'Nombre': name,
             'Apellido': lastname,
+            'Correo': correo,
             'Titulo de Trabajo': title,
-            'Institucion': inst,
+            'Institucion': inst == 'otra' ? document.querySelector("#institucionProcedencia").value : inst ,
             'Tipo de Trabajo': type,
         }
     };
@@ -46,8 +49,14 @@ document.querySelector("#register").addEventListener('click', (e) => {
 document.getElementById("institucion").addEventListener('input', (e) => {
     const cosa = document.getElementById("institucion").value;
     if (cosa == "otra") {
+        document.getElementById('OtraIns').innerHTML = `
+        <label for="correo">Procedencia<span>*</span></label>
+        <div class="name-item">
+            <input id="institucionProcedencia" type="text" name="institucionProcedencia" placeholder="Institución de procedencia" required />
+        </div>
+        `;
         document.getElementById('informacionPaga').innerHTML = `
-        <label htmlFor="">Informacion de pago</label>
+        <label htmlFor="">Información de pago</label>
         <p>
         No. Cuenta: <strong>0102001446</strong> <br/>
         Nombre: <strong>Universidad Politécnica de Aguascalientes</strong><br/>
